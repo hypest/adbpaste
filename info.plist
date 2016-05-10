@@ -41,7 +41,7 @@ global frontApp, frontAppName, windowTitleset windowTitle to ""tell applicati
 
 set pb to do shell script "echo `pbpaste` | sed -e 's/ /%s/g'"
 
-set output to do shell script adbPath &amp; " -s emulator-" &amp; emuPort &amp; " shell input text '" &amp; pb &amp; "'"
+do shell script adbPath &amp; " -s emulator-" &amp; emuPort &amp; " shell input text '" &amp; pb &amp; "'"
 
 end alfred_script</string>
 				<key>cachescript</key>
