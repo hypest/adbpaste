@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>27D7EBDE-DCF4-40DA-993B-F2547448B8D4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2C2B5ADC-50D0-4495-AFB6-C05077291E5B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Stefanos Togoulidis (hypest)</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>adbPaste</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+
+global frontApp, frontAppName, windowTitleset windowTitle to ""tell application "System Events"	set frontApp to first application process whose frontmost is true	set frontAppName to name of frontApp	tell process frontAppName		tell (1st window whose value of attribute "AXMain" is true)			set windowTitle to value of attribute "AXTitle"		end tell	end tellend tellset emuPort to word 1 of windowTitle
+set adbPath to "/Applications/android/sdk/platform-tools/adb"
+
+do shell script adbPath &amp; " -s emulator-" &amp; emuPort &amp; " shell input text `pbpaste`"
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>2C2B5ADC-50D0-4495-AFB6-C05077291E5B</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>9</integer>
+				<key>hotmod</key>
+				<integer>1179648</integer>
+				<key>hotstring</key>
+				<string>V</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>27D7EBDE-DCF4-40DA-993B-F2547448B8D4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Edit the script to set the ADB path correctly!</string>
+	<key>uidata</key>
+	<dict>
+		<key>27D7EBDE-DCF4-40DA-993B-F2547448B8D4</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+		<key>2C2B5ADC-50D0-4495-AFB6-C05077291E5B</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
